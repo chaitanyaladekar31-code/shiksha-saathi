@@ -1,0 +1,110 @@
+.hero {
+  --hero-image-position: 50% 40%; /* tune the crop focus here */
+  position: relative;
+  display: grid;
+  padding-top: var(--nav-height);
+  background: var(--color-paper);
+  overflow-x: clip;
+}
+
+/* Mobile-first: eyebrow, headline, lede, CTA, then a full-bleed image */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-lg) var(--gutter) var(--space-xl);
+}
+
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+.hero__eyebrow::before {
+  content: '';
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+.hero__title {
+  max-inline-size: 7em;
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* Each word is clipped so it can rise into place; padding leaves room for
+   descenders and the italic overhang, margins cancel it out for layout. */
+.hero__word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.08em 0.06em 0.22em;
+  margin: -0.08em -0.06em -0.22em;
+}
+.hero__word-inner { display: inline-block; }
+.hero__word--accent { font-style: italic; color: var(--color-primary); }
+
+.hero__lede {
+  max-inline-size: 26rem;
+  margin-top: var(--space-md);
+  font-size: var(--text-lead);
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+.hero__cta { margin-top: var(--space-lg); }
+
+.hero__media { margin: 0; }
+.hero__frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-paper-deep);
+}
+/* Taller than the frame so scroll parallax never reveals an edge */
+.hero__img {
+  position: absolute;
+  top: -8%;
+  left: 0;
+  width: 100%;
+  height: 116%;
+  object-fit: cover;
+  object-position: var(--hero-image-position);
+  will-change: transform;
+}
+
+/* Tablet: two columns, even split */
+@media (min-width: 48em) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+  .hero__content {
+    justify-content: center;
+    padding-block: var(--space-xl);
+    padding-right: var(--space-md);
+  }
+  .hero__media { position: relative; min-height: 30rem; }
+  .hero__frame {
+    position: absolute;
+    inset: var(--space-md) 0 var(--space-lg) 0; /* bleeds off the right edge */
+    aspect-ratio: auto;
+  }
+}
+
+/* Desktop: image gets the larger share */
+@media (min-width: 64em) {
+  .hero { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .hero__content { padding-right: var(--space-xl); }
+}

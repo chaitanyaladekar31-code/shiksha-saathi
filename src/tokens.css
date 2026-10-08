@@ -1,0 +1,30 @@
+:root {
+  color-scheme: light;
+
+  /* Colour */
+  --color-primary: #0B5D3B;
+  --color-paper: #F7F5EF;
+  --color-ink: #151515;
+  --color-muted: #686862;
+  --color-accent: #D9A441; /* decorative only: too low contrast for text on paper */
+  --color-paper-deep: #EDE9DC; /* image placeholder while loading */
+  --color-line: rgb(21 21 21 / 0.12);
+
+  /* Type */
+  --font-display: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --text-hero: clamp(2.75rem, 1.9rem + 4vw, 6.5rem);
+  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+
+  /* Space */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: clamp(2rem, 4vw, 3rem);
+  --space-xl: clamp(3rem, 6vw, 5rem);
+  --nav-height: 4.5rem;
+
+  /* Motion (CSS transitions only; GSAP has its own easing) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
